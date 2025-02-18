@@ -1,11 +1,14 @@
 import React from 'react'
 import Button from './Button';
 
-const Friend = ({friend}) => {
-    console.log(friend);
-    
+const Friend = ({friend,onSelection,selectedFriend}) => {
+   
+   const isSelected = selectedFriend?.id === friend?.id 
+  console.log("selectedFriend",selectedFriend);
+  console.log("friend",friend);
+   
   return (
-    <li>
+    <li className={`${isSelected ? "selected" : ""}`}>
      <img  src={friend.image} alt={friend.name}/> 
      <h3>{friend.name}</h3>
      {friend.balance < 0 && 
@@ -19,7 +22,7 @@ const Friend = ({friend}) => {
     {friend.balance === 0 && 
      <p>you and {friend.name} are even</p>
      }
-    <Button>Select</Button>
+    <Button onClick={()=>onSelection(friend)}>Select</Button>
     </li>
   )
 }
