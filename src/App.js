@@ -47,7 +47,8 @@ function App() {
     // console.log("selectedFriendObj",selectedFriendObj);
     
 
-    setSelectedFriend(selectedFriendObj)
+    setSelectedFriend((current)=> (current?.id === selectedFriendObj.id ? null : selectedFriendObj));
+    setShowAddFriend(false)
   }
 
   return (
